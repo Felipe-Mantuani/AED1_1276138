@@ -16,7 +16,7 @@ int main(){
     //Processamento de entrada
     unsigned int *vetor, maior;
     int pos;
-    vetor = malloc(100*sizeof(unsigned int));
+    vetor = (int *) malloc(100*sizeof(unsigned int));
     for (int i = 0; i < 100; i++){
         scanf("%u", vetor+i);
     }
