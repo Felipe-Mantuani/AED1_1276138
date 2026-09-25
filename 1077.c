@@ -8,7 +8,6 @@ Objetivo    : Transformar uma infixa para posfixa
 Dificuldade : Tive dificuldades na precedencia dos simbolos, e tratar eles para a saida
 Uso de IA   : utilizei IA para me auxiliar na minha dificuldade, porem pedi apenas para me dar dicas, sem dar o codigo
 -------------------------------------------------------------------------- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,6 +37,7 @@ char pop(No* topo) {
     return -1;
 }
 
+//verificacao do operador que esta no topo
 char verificar(No* topo) {
     if (topo->prox != NULL) {
         return topo->prox->operador;
@@ -83,11 +83,13 @@ int main() {
             free(topo);
             break;
         }
+        //Para eliminar o \n do fgets
         entrada[strcspn(entrada, "\n")] = '\0';
         int len = strlen(entrada);
         for (int j = 0; j < len; j++) {
             char atual = entrada[j];
 
+            //operando vai para o vetor de saida
             if (ehOperando(atual)) {
                 saida[tamanhoSaida++] = atual;
             } 
@@ -112,6 +114,7 @@ int main() {
             saida[tamanhoSaida++] = pop(topo);
         }
         
+        //Apresentar a saida
         saida[tamanhoSaida] = '\0';
         printf("%s\n", saida);
 
